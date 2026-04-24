@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e568fde398b4436ae56565f42e3b70, type: 3}
   m_Name: SpawnerOrchestratorConfig
   m_EditorClassIdentifier: Assembly-CSharp::Spawning.WaveDirectorConfig
-  enemyRoster: []
+  enemyRoster:
+  - {fileID: 11400000, guid: 84acbe5b245034d6e9e287cf9c5e48e1, type: 2}
   initialDelay: 2
   intermissionDuration: 4
   startingWaveDuration: 25
