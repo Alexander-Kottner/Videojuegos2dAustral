@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345fbba9c0de84292b2bc17279ea8730, type: 3}
   m_Name: SkeletonMelee
   m_EditorClassIdentifier: Assembly-CSharp::Enemies.Data.EnemyDefinition
+  prefab: {fileID: -1945655879507133124, guid: 28325b7bbc0964827978f41ab08a4869, type: 3}
   movementBehaviour: {fileID: 11400000, guid: 67528dec4030f4d20bce5c852f4336e1, type: 2}
+  spawnCost: 1
+  unlockWave: 1
+  spawnWeight: 1
+  spawnRole: 0
+  maxAlive: 0
