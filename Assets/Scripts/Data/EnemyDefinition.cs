@@ -8,6 +8,7 @@ namespace Enemies.Data
     {
         [SerializeField] private EnemyController prefab;
         [SerializeField] private EnemyMovementBehaviour movementBehaviour;
+        [SerializeField] private EnemyAttackBehaviour attackBehaviour;
         [SerializeField, Min(1)] private int spawnCost = 1;
         [SerializeField, Min(1)] private int unlockWave = 1;
         [SerializeField, Min(0.01f)] private float spawnWeight = 1f;
@@ -16,6 +17,7 @@ namespace Enemies.Data
 
         public EnemyController Prefab => prefab;
         public EnemyMovementBehaviour MovementBehaviour => movementBehaviour;
+        public EnemyAttackBehaviour AttackBehaviour => attackBehaviour;
         public int SpawnCost => Mathf.Max(1, spawnCost);
         public int UnlockWave => Mathf.Max(1, unlockWave);
         public float SpawnWeight => Mathf.Max(0f, spawnWeight);

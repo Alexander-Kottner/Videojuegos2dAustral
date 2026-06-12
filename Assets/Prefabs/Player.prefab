@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5109204020554266424}
+  - component: {fileID: 7139743116940132402}
+  - component: {fileID: 6402461735517321975}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -16,6 +18,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7139743116940132402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5823664052285644826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d9acb633bfc4c908fa10c925f269df5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Input.PlayerHealth
+  maximumHealth: 100
+  currentHealth: 100
+--- !u!114 &6402461735517321975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5823664052285644826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9cd62d2a82498ca6e09a29396b3e84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.PlayerWeaponController
+  startingWeaponPrefabs:
+  - {fileID: 3412614029122313958, guid: 6b25dbaf0f9949ec98a17f090c8dbe1d, type: 3}
 --- !u!4 &5109204020554266424
 Transform:
   m_ObjectHideFlags: 0

@@ -101,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3687211000196787491}
   - component: {fileID: -1945655879507133124}
+  - component: {fileID: 2310490388649715632}
   - component: {fileID: 4557510603714957874}
   - component: {fileID: -708937206313648848}
   m_Layer: 0
@@ -144,6 +145,30 @@ MonoBehaviour:
   autoAcquireTarget: 1
   targetTag: Player
   retargetInterval: 0.5
+  attackAnimationSprites:
+  - {fileID: -2071073656593590071, guid: 9009c5889e1ca0a41b8a9e547cef8d42, type: 3}
+  - {fileID: -4085372662798452815, guid: 9009c5889e1ca0a41b8a9e547cef8d42, type: 3}
+  - {fileID: 5208519347372511414, guid: 9009c5889e1ca0a41b8a9e547cef8d42, type: 3}
+  - {fileID: -3142435057486016877, guid: 9009c5889e1ca0a41b8a9e547cef8d42, type: 3}
+  - {fileID: -2637764417314834933, guid: 9009c5889e1ca0a41b8a9e547cef8d42, type: 3}
+  - {fileID: 579105167017132205, guid: 9009c5889e1ca0a41b8a9e547cef8d42, type: 3}
+  - {fileID: -1791478280210362034, guid: 9009c5889e1ca0a41b8a9e547cef8d42, type: 3}
+  attackAnimationFrameDuration: 0.08
+--- !u!114 &2310490388649715632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5436881143911163618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d780b4747664276b0c84fce73f66a1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemies.EnemyHealth
+  maximumHealth: 10
+  currentHealth: 10
+  resetHealthOnEnable: 1
 --- !u!61 &4557510603714957874
 BoxCollider2D:
   m_ObjectHideFlags: 0
