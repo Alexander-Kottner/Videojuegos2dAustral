@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872767225c2f48fa851b8067981854e0, type: 3}
+  m_Name: StormStaff
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.WeaponDefinition
+  displayName: Storm Staff
+  description: Lightning leaps from foe to foe in crackling chains.
+  rangeType: 1
+  weightClass: 1
+  attackBehaviour: {fileID: 11400000, guid: 391c349bb38b4467a12fa8d2e5d71005, type: 2}
+  stages:
+  - stageName: Storm Staff
+    sprite: {fileID: 4385772966036683815, guid: cf9fc6ebe444b8c4ba5cc948db7216e7, type: 3}
+    lastHitsToReach: 0
+    damageMultiplier: 1
+    cooldownMultiplier: 1
+    rangeMultiplier: 1
+    areaMultiplier: 1
+    extraProjectiles: 0
+  - stageName: Gilded Storm Staff
+    sprite: {fileID: 1276396510893163647, guid: 0c1089202b5f9054788c9f4cb40ad86c, type: 3}
+    lastHitsToReach: 15
+    damageMultiplier: 1.5
+    cooldownMultiplier: 0.85
+    rangeMultiplier: 1.15
+    areaMultiplier: 1.2
+    extraProjectiles: 0
+  - stageName: Crystal Storm Staff
+    sprite: {fileID: -5775075364634998119, guid: d1938c16dc84e3f4d8504065c1532713, type: 3}
+    lastHitsToReach: 45
+    damageMultiplier: 2.2
+    cooldownMultiplier: 0.7
+    rangeMultiplier: 1.3
+    areaMultiplier: 1.4
+    extraProjectiles: 1

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24cbac83570f4e8abd3ddb88a259fa13, type: 3}
+  m_Name: LongbowAttack
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.ProjectileWeaponAttackBehaviour
+  damage: 24
+  attackCooldown: 1.7
+  attackRange: 10
+  projectileSpeed: 20
+  projectileCount: 1
+  spreadAngle: 6
+  pierces: 99
+  bounces: 0
+  returnToOwner: 0
+  homing: 0
+  spinSpeed: 0
+  explodeRadius: 0
+  projectileScale: 0.85
+  hitRadius: 0.2
+  emitTrail: 0
+  effectColor: {r: 1, g: 0.85, b: 0.4, a: 1}

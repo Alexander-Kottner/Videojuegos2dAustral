@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872767225c2f48fa851b8067981854e0, type: 3}
+  m_Name: MagicWand
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.WeaponDefinition
+  displayName: Magic Wand
+  description: Launches arcane bolts that home in on prey.
+  rangeType: 1
+  weightClass: 0
+  attackBehaviour: {fileID: 11400000, guid: 40517dfc38544855b7568c5efee9393a, type: 2}
+  stages:
+  - stageName: Magic Wand
+    sprite: {fileID: 6114589319683517632, guid: acc5a7a4b169edb4890a7c6b638f850b, type: 3}
+    lastHitsToReach: 0
+    damageMultiplier: 1
+    cooldownMultiplier: 1
+    rangeMultiplier: 1
+    areaMultiplier: 1
+    extraProjectiles: 0
+  - stageName: Gilded Wand
+    sprite: {fileID: -6565377308154515549, guid: de46320990b4a9343acd62eda270800b, type: 3}
+    lastHitsToReach: 20
+    damageMultiplier: 1.5
+    cooldownMultiplier: 0.85
+    rangeMultiplier: 1.15
+    areaMultiplier: 1.2
+    extraProjectiles: 0
+  - stageName: Crystal Wand
+    sprite: {fileID: -8180718098851501313, guid: 577107b34900cf14aaf3a08393068ccc, type: 3}
+    lastHitsToReach: 60
+    damageMultiplier: 2.2
+    cooldownMultiplier: 0.7
+    rangeMultiplier: 1.3
+    areaMultiplier: 1.4
+    extraProjectiles: 1

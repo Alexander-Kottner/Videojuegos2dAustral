@@ -27,9 +27,14 @@ namespace Enemies
         private float _nextAttackAnimationFrameTime;
         private bool _isPlayingAttackAnimation;
 
+        private Vector3 _baseScale = Vector3.one;
+        private bool _baseScaleCaptured;
+
         public EnemyDefinition Definition => definition;
         public Rigidbody2D Rigidbody2D => _rigidbody2D;
         public Transform Target => targetOverride;
+        public float SpeedMultiplier { get; set; } = 1f;
+        public float DamageMultiplier { get; set; } = 1f;
 
         private void Awake()
         {
@@ -67,6 +72,34 @@ namespace Enemies
         public void SetTarget(Transform newTarget)
         {
             targetOverride = newTarget;
+        }
+
+        public void ApplyVisualOverrides(Color tint, float scaleMultiplier)
+        {
+            CaptureBaseScale();
+
+            if (spriteRenderer == null)
+            {
+                spriteRenderer = GetComponentInChildren<SpriteRenderer>(true);
+            }
+
+            if (spriteRenderer != null)
+            {
+                spriteRenderer.color = tint;
+            }
+
+            transform.localScale = _baseScale * Mathf.Max(0.05f, scaleMultiplier);
+        }
+
+        private void CaptureBaseScale()
+        {
+            if (_baseScaleCaptured)
+            {
+                return;
+            }
+
+            _baseScale = transform.localScale;
+            _baseScaleCaptured = true;
         }
 
         public bool TryAcquireTarget()

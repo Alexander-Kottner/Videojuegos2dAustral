@@ -20,3 +20,6 @@ MonoBehaviour:
   spawnWeight: 1
   spawnRole: 0
   maxAlive: 0
+  tint: {r: 1, g: 1, b: 1, a: 1}
+  scaleMultiplier: 1
+  healthMultiplier: 1

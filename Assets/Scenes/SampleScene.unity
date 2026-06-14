@@ -495,6 +495,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 403314139}
+  - component: {fileID: 403314140}
+  - component: {fileID: 403314141}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -517,6 +519,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &403314140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403314138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02820abff6ea4ebf97d75d890d247e71, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::UI.WeaponRewardSystem
+  weaponLibrary: {fileID: 11400000, guid: 33c6e911cbf9483fa60a63bf18bb9e95, type: 2}
+  playerWeapons: {fileID: 0}
+  spawner: {fileID: 0}
+  wavesPerReward: 1
+  healAmount: 30
+  finalWave: 20
+--- !u!114 &403314141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403314138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e3f3097cc94fdab9da2560c172d930, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::UI.GameHUD
+  spawner: {fileID: 0}
+  playerWeapons: {fileID: 0}
+  finalWave: 20
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

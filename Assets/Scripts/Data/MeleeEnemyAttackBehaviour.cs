@@ -48,7 +48,7 @@ namespace Enemies.Data
             }
 
             context.Controller.PlayAttackAnimation(context.Time);
-            targetHealth.TakeDamage(damage);
+            targetHealth.TakeDamage(Mathf.Max(1, Mathf.RoundToInt(damage * context.Controller.DamageMultiplier)));
         }
     }
 }

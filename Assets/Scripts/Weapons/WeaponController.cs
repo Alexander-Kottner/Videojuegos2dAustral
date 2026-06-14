@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using Weapons.Data;
+using Weapons.Effects;
 
 namespace Weapons
 {
@@ -20,6 +22,9 @@ namespace Weapons
         [SerializeField, Min(0.001f)] private float hitIndicatorEndWidth = 0.01f;
         [SerializeField] private Material hitIndicatorMaterial;
 
+        private const float AttackPunchDuration = 0.12f;
+        private const float AttackPunchDistance = 0.22f;
+
         private Transform _owner;
         private Sprite _defaultSprite;
         private Sprite[] _attackAnimationSprites;
@@ -30,8 +35,24 @@ namespace Weapons
         private float _hideHitIndicatorTime;
         private bool _isPlayingAttackAnimation;
 
+        private int _lastHitCount;
+        private int _stageIndex;
+        private float _bonusDamageMultiplier = 1f;
+        private float _bonusCooldownMultiplier = 1f;
+        private Vector3 _baseLocalPosition;
+        private Vector2 _punchDirection;
+        private float _punchEndTime;
+        private object _behaviourState;
+
         public WeaponDefinition Definition => definition;
         public Transform Owner => _owner;
+        public int LastHitCount => _lastHitCount;
+        public int StageIndex => _stageIndex;
+        public WeaponStage CurrentStage => definition != null ? definition.GetStage(_stageIndex) : null;
+        public float BonusDamageMultiplier => _bonusDamageMultiplier;
+        public float BonusCooldownMultiplier => _bonusCooldownMultiplier;
+
+        public event Action<WeaponController> Evolved;
 
         private void Awake()
         {
@@ -45,6 +66,8 @@ namespace Weapons
                 _defaultSprite = spriteRenderer.sprite;
             }
 
+            _baseLocalPosition = transform.localPosition;
+            ApplyStageVisual(_stageIndex);
             ResolveHitIndicator();
         }
 
@@ -53,10 +76,62 @@ namespace Weapons
             ResetRuntimeState();
         }
 
+        public void ApplyDefinition(WeaponDefinition newDefinition)
+        {
+            definition = newDefinition;
+            _lastHitCount = 0;
+            _stageIndex = 0;
+            ApplyStageVisual(0);
+        }
+
         public void BindOwner(Transform owner)
         {
             _owner = owner;
             ApplyOwnerSorting();
+        }
+
+        public void SetBaseLocalPosition(Vector3 localPosition)
+        {
+            _baseLocalPosition = localPosition;
+            transform.localPosition = localPosition;
+        }
+
+        public T GetOrCreateState<T>() where T : class, new()
+        {
+            if (_behaviourState is T existing)
+            {
+                return existing;
+            }
+
+            T state = new();
+            _behaviourState = state;
+            return state;
+        }
+
+        public void AddDamageBoost(float multiplier)
+        {
+            _bonusDamageMultiplier *= Mathf.Max(0.01f, multiplier);
+        }
+
+        public void AddCooldownBoost(float multiplier)
+        {
+            _bonusCooldownMultiplier *= Mathf.Clamp(multiplier, 0.1f, 10f);
+        }
+
+        public void NotifyLastHit()
+        {
+            _lastHitCount++;
+
+            if (definition == null)
+            {
+                return;
+            }
+
+            int targetStage = definition.GetStageIndexForLastHits(_lastHitCount);
+            if (targetStage > _stageIndex)
+            {
+                Evolve(targetStage);
+            }
         }
 
         public bool TryUseAttack(float time, float cooldown)
@@ -89,9 +164,26 @@ namespace Weapons
             }
         }
 
+        public void PlayAttackPunch(Vector2 worldDirection, float time)
+        {
+            if (worldDirection.sqrMagnitude < 0.0001f)
+            {
+                return;
+            }
+
+            _punchDirection = worldDirection.normalized;
+            _punchEndTime = time + AttackPunchDuration;
+
+            if (spriteRenderer != null && Mathf.Abs(worldDirection.x) > 0.01f)
+            {
+                spriteRenderer.flipX = worldDirection.x < 0f;
+            }
+        }
+
         public void TickAnimation(float time)
         {
             TickHitIndicator(time);
+            TickPunch(time);
 
             if (!_isPlayingAttackAnimation || spriteRenderer == null || time < _nextAttackAnimationFrameTime)
             {
@@ -146,10 +238,58 @@ namespace Weapons
             _hideHitIndicatorTime = time + hitIndicatorDuration;
         }
 
+        private void Evolve(int stageIndex)
+        {
+            _stageIndex = stageIndex;
+            ApplyStageVisual(stageIndex);
+
+            Color glow = new(1f, 0.93f, 0.45f);
+            CombatEffects.SpawnShockwave(transform.position, glow, 1.4f, 0.45f);
+            CombatEffects.SpawnImpactBurst(transform.position, glow, 1.2f);
+
+            string stageName = CurrentStage != null && !string.IsNullOrEmpty(CurrentStage.StageName)
+                ? CurrentStage.StageName
+                : definition.DisplayName;
+            CombatEffects.SpawnText(transform.position + Vector3.up * 0.8f, $"{stageName}!", glow, 3.5f);
+
+            Evolved?.Invoke(this);
+        }
+
+        private void ApplyStageVisual(int stageIndex)
+        {
+            WeaponStage stage = definition != null ? definition.GetStage(stageIndex) : null;
+            if (stage == null || stage.Sprite == null || spriteRenderer == null)
+            {
+                return;
+            }
+
+            spriteRenderer.sprite = stage.Sprite;
+            _defaultSprite = stage.Sprite;
+        }
+
         private void ResetRuntimeState()
         {
             _nextAttackTime = 0f;
             StopAttackAnimation();
+        }
+
+        private void TickPunch(float time)
+        {
+            if (_punchEndTime <= 0f)
+            {
+                return;
+            }
+
+            float remaining = _punchEndTime - time;
+            if (remaining <= 0f)
+            {
+                transform.localPosition = _baseLocalPosition;
+                _punchEndTime = 0f;
+                return;
+            }
+
+            float strength = remaining / AttackPunchDuration;
+            transform.localPosition = _baseLocalPosition + (Vector3)(_punchDirection * (AttackPunchDistance * strength));
         }
 
         private void ApplyOwnerSorting()

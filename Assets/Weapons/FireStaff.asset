@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872767225c2f48fa851b8067981854e0, type: 3}
+  m_Name: FireStaff
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.WeaponDefinition
+  displayName: Fire Staff
+  description: Lobs fireballs that explode, scorching everything nearby.
+  rangeType: 1
+  weightClass: 1
+  attackBehaviour: {fileID: 11400000, guid: d79c1526b07749c7b5979ef0355d2b39, type: 2}
+  stages:
+  - stageName: Fire Staff
+    sprite: {fileID: 8834489136728019185, guid: 4b52329270447b04e8910fc8b81d0d81, type: 3}
+    lastHitsToReach: 0
+    damageMultiplier: 1
+    cooldownMultiplier: 1
+    rangeMultiplier: 1
+    areaMultiplier: 1
+    extraProjectiles: 0
+  - stageName: Gilded Fire Staff
+    sprite: {fileID: -5876641319135160359, guid: 7de0dcaa398b6ed44ae74db322788994, type: 3}
+    lastHitsToReach: 15
+    damageMultiplier: 1.5
+    cooldownMultiplier: 0.85
+    rangeMultiplier: 1.15
+    areaMultiplier: 1.2
+    extraProjectiles: 0
+  - stageName: Crystal Fire Staff
+    sprite: {fileID: -8504665131805920929, guid: a09247fad0fb32e40a395a3f85af243b, type: 3}
+    lastHitsToReach: 45
+    damageMultiplier: 2.2
+    cooldownMultiplier: 0.7
+    rangeMultiplier: 1.3
+    areaMultiplier: 1.4
+    extraProjectiles: 1

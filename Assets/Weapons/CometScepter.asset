@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872767225c2f48fa851b8067981854e0, type: 3}
+  m_Name: CometScepter
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.WeaponDefinition
+  displayName: Comet Scepter
+  description: Calls comets down on distant enemies after a short delay.
+  rangeType: 1
+  weightClass: 1
+  attackBehaviour: {fileID: 11400000, guid: 45d7a1abeac64ca980f600d9522a908c, type: 2}
+  stages:
+  - stageName: Comet Scepter
+    sprite: {fileID: 7496228547893632116, guid: 549537c1f01b26c498693f9baeadc7a8, type: 3}
+    lastHitsToReach: 0
+    damageMultiplier: 1
+    cooldownMultiplier: 1
+    rangeMultiplier: 1
+    areaMultiplier: 1
+    extraProjectiles: 0

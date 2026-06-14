@@ -44,8 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9cd62d2a82498ca6e09a29396b3e84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Weapons.PlayerWeaponController
-  startingWeaponPrefabs:
-  - {fileID: 3412614029122313958, guid: 6b25dbaf0f9949ec98a17f090c8dbe1d, type: 3}
+  startingWeaponPrefabs: []
+  startingWeaponDefinitions:
+  - {fileID: 11400000, guid: abed167da72d493aa380bb34e9e49d88, type: 2}
+  weaponSlotOffset: {x: 0.38, y: -0.05}
+  weaponVisualScale: 0.85
 --- !u!4 &5109204020554266424
 Transform:
   m_ObjectHideFlags: 0

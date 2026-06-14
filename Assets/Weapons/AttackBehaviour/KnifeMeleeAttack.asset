@@ -9,12 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 703c89b9a75845b79040900d4276edb7, type: 3}
+  m_Script: {fileID: 11500000, guid: a2975dce9a72444bb848881efc8cf2a1, type: 3}
   m_Name: KnifeMeleeAttack
-  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.MeleeWeaponAttackBehaviour
-  damage: 10
-  attackRange: 0.5
-  attackCooldown: 1
-  targetLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.ThrustMeleeWeaponAttackBehaviour
+  damage: 6
+  attackCooldown: 0.55
+  attackRange: 1.4
+  thrustWidth: 0.5
+  effectColor: {r: 0.9, g: 0.95, b: 1, a: 1}

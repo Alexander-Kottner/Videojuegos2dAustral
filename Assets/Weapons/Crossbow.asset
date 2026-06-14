@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872767225c2f48fa851b8067981854e0, type: 3}
+  m_Name: Crossbow
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.WeaponDefinition
+  displayName: Crossbow
+  description: Heavy bolts that punch straight through several enemies.
+  rangeType: 1
+  weightClass: 1
+  attackBehaviour: {fileID: 11400000, guid: 0755e1278e20433483c150c3678cb7d8, type: 2}
+  stages:
+  - stageName: Crossbow
+    sprite: {fileID: -3049289329323023382, guid: efc345357fe0b5343911b9a6c08f30a7, type: 3}
+    lastHitsToReach: 0
+    damageMultiplier: 1
+    cooldownMultiplier: 1
+    rangeMultiplier: 1
+    areaMultiplier: 1
+    extraProjectiles: 0
+  - stageName: Gilded Crossbow
+    sprite: {fileID: 7874533250494123582, guid: 06bf85f9078167c478c1616586419847, type: 3}
+    lastHitsToReach: 16
+    damageMultiplier: 1.5
+    cooldownMultiplier: 0.85
+    rangeMultiplier: 1.15
+    areaMultiplier: 1.2
+    extraProjectiles: 0
+  - stageName: Crystal Crossbow
+    sprite: {fileID: 1641310337621925516, guid: 9a3d50c36c8950b419423f0199bd4da8, type: 3}
+    lastHitsToReach: 48
+    damageMultiplier: 2.2
+    cooldownMultiplier: 0.7
+    rangeMultiplier: 1.3
+    areaMultiplier: 1.4
+    extraProjectiles: 1

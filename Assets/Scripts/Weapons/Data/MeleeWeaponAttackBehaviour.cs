@@ -18,20 +18,20 @@ namespace Weapons.Data
                 return;
             }
 
-            EnemyHealth target = FindTarget(context.Position);
-            if (target == null || !context.TryUseAttack(attackCooldown))
+            EnemyHealth target = FindTarget(context.Position, context.ScaleRange(attackRange));
+            if (target == null || !context.TryUseAttack(context.ScaleCooldown(attackCooldown)))
             {
                 return;
             }
 
             context.PlayAttackAnimation();
             context.PlayHitIndicator(target.transform);
-            target.TakeDamage(damage);
+            context.DealDamage(target, context.ScaleDamage(damage), Color.white);
         }
 
-        private EnemyHealth FindTarget(Vector2 position)
+        private EnemyHealth FindTarget(Vector2 position, float range)
         {
-            Collider2D[] hits = Physics2D.OverlapCircleAll(position, attackRange, targetLayers);
+            Collider2D[] hits = Physics2D.OverlapCircleAll(position, range, targetLayers);
 
             for (int i = 0; i < hits.Length; i++)
             {

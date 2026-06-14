@@ -42,6 +42,10 @@ namespace Spawning
         public int CurrentWave => _currentWave;
         public bool IsIntermission => _isIntermission;
         public Transform Target => targetOverride;
+        public int AliveEnemyCount => _aliveEnemyCount;
+
+        public event System.Action<int> WaveStarted;
+        public event System.Action<int> WaveCompleted;
 
         private void Start()
         {
@@ -141,6 +145,11 @@ namespace Spawning
         {
             _isIntermission = true;
             _stateEndTime = Time.time + config.IntermissionDuration;
+
+            if (_currentWave >= 1)
+            {
+                WaveCompleted?.Invoke(_currentWave);
+            }
         }
 
         private void StartNextWave()
@@ -152,6 +161,8 @@ namespace Spawning
             _currentWaveDuration = config.GetWaveDuration(_currentWave);
             _stateEndTime = Time.time + _currentWaveDuration;
             _nextSpawnTime = Time.time;
+
+            WaveStarted?.Invoke(_currentWave);
         }
 
         private bool TrySpawnEnemy()
@@ -189,10 +200,25 @@ namespace Spawning
                 enemy.gameObject.SetActive(true);
             }
 
+            ApplyWaveScaling(definition, enemy);
+
             _remainingBudget = Mathf.Max(0, _remainingBudget - definition.SpawnCost);
             _aliveEnemyCount++;
             _aliveCounts[definition] = GetAliveCount(definition) + 1;
             return true;
+        }
+
+        private void ApplyWaveScaling(EnemyDefinition definition, EnemyController enemy)
+        {
+            EnemyHealth health = enemy.GetComponent<EnemyHealth>();
+            if (health != null)
+            {
+                health.ApplyHealthMultiplier(definition.HealthMultiplier * config.GetEnemyHealthMultiplier(_currentWave));
+            }
+
+            enemy.SpeedMultiplier = config.GetEnemySpeedMultiplier(_currentWave);
+            enemy.DamageMultiplier = config.GetEnemyDamageMultiplier(_currentWave);
+            enemy.ApplyVisualOverrides(definition.Tint, definition.ScaleMultiplier);
         }
 
         private EnemyDefinition PickEnemyDefinition()
