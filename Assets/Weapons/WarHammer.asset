@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872767225c2f48fa851b8067981854e0, type: 3}
+  m_Name: WarHammer
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.WeaponDefinition
+  displayName: War Hammer
+  description: Slams the ground, sending a shockwave through all nearby enemies.
+  rangeType: 0
+  weightClass: 1
+  attackBehaviour: {fileID: 11400000, guid: 2889f2b9c5e34579bf58491d2f057763, type: 2}
+  stages:
+  - stageName: War Hammer
+    sprite: {fileID: 5248670073030767168, guid: 8711064daacc1584583c2d7d26c60183, type: 3}
+    lastHitsToReach: 0
+    damageMultiplier: 1
+    cooldownMultiplier: 1
+    rangeMultiplier: 1
+    areaMultiplier: 1
+    extraProjectiles: 0
+  - stageName: Gilded Hammer
+    sprite: {fileID: -4704153986368149409, guid: 21091fdbdd45f174f9dd8d7689a79766, type: 3}
+    lastHitsToReach: 16
+    damageMultiplier: 1.5
+    cooldownMultiplier: 0.85
+    rangeMultiplier: 1.15
+    areaMultiplier: 1.2
+    extraProjectiles: 0
+  - stageName: Crystal Hammer
+    sprite: {fileID: -5476458450328997272, guid: 89ed2e82535f54f4c9df464ef50ed981, type: 3}
+    lastHitsToReach: 45
+    damageMultiplier: 2.2
+    cooldownMultiplier: 0.7
+    rangeMultiplier: 1.3
+    areaMultiplier: 1.4
+    extraProjectiles: 1

@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872767225c2f48fa851b8067981854e0, type: 3}
+  m_Name: BattleAxe
+  m_EditorClassIdentifier: Assembly-CSharp::Weapons.Data.WeaponDefinition
+  displayName: Battle Axe
+  description: A massive cleave that carves through every enemy in front of you.
+  rangeType: 0
+  weightClass: 1
+  attackBehaviour: {fileID: 11400000, guid: 4fa1b55d89a84f83ab13e6d789fb5fdf, type: 2}
+  stages:
+  - stageName: Battle Axe
+    sprite: {fileID: -6336547034837610958, guid: b56f1d05c476f4d4ba15042826bac133, type: 3}
+    lastHitsToReach: 0
+    damageMultiplier: 1
+    cooldownMultiplier: 1
+    rangeMultiplier: 1
+    areaMultiplier: 1
+    extraProjectiles: 0
+  - stageName: Gilded Axe
+    sprite: {fileID: -9083495053248731156, guid: d351b39b361c89f46b476fe47a0bfde6, type: 3}
+    lastHitsToReach: 18
+    damageMultiplier: 1.5
+    cooldownMultiplier: 0.85
+    rangeMultiplier: 1.15
+    areaMultiplier: 1.2
+    extraProjectiles: 0
+  - stageName: Crystal Axe
+    sprite: {fileID: -5858816550354108443, guid: 5c0180cf128017a4aae62fc01d91d400, type: 3}
+    lastHitsToReach: 50
+    damageMultiplier: 2.2
+    cooldownMultiplier: 0.7
+    rangeMultiplier: 1.3
+    areaMultiplier: 1.4
+    extraProjectiles: 1

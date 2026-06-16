@@ -25,7 +25,7 @@ namespace Enemies.Data
             }
 
             Vector2 direction = toTarget / distance;
-            context.Controller.Move(direction * moveSpeed, context.DeltaTime);
+            context.Controller.Move(direction * (moveSpeed * context.Controller.SpeedMultiplier), context.DeltaTime);
             context.Controller.FaceDirection(direction);
         }
     }

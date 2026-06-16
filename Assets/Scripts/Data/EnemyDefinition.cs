@@ -8,19 +8,27 @@ namespace Enemies.Data
     {
         [SerializeField] private EnemyController prefab;
         [SerializeField] private EnemyMovementBehaviour movementBehaviour;
+        [SerializeField] private EnemyAttackBehaviour attackBehaviour;
         [SerializeField, Min(1)] private int spawnCost = 1;
         [SerializeField, Min(1)] private int unlockWave = 1;
         [SerializeField, Min(0.01f)] private float spawnWeight = 1f;
         [SerializeField] private EnemySpawnRole spawnRole = EnemySpawnRole.Common;
         [SerializeField] private int maxAlive = 0;
+        [SerializeField] private Color tint = Color.white;
+        [SerializeField, Min(0.05f)] private float scaleMultiplier = 1f;
+        [SerializeField, Min(0.01f)] private float healthMultiplier = 1f;
 
         public EnemyController Prefab => prefab;
         public EnemyMovementBehaviour MovementBehaviour => movementBehaviour;
+        public EnemyAttackBehaviour AttackBehaviour => attackBehaviour;
         public int SpawnCost => Mathf.Max(1, spawnCost);
         public int UnlockWave => Mathf.Max(1, unlockWave);
         public float SpawnWeight => Mathf.Max(0f, spawnWeight);
         public EnemySpawnRole SpawnRole => spawnRole;
         public int MaxAlive => maxAlive;
+        public Color Tint => tint;
+        public float ScaleMultiplier => Mathf.Max(0.05f, scaleMultiplier);
+        public float HealthMultiplier => Mathf.Max(0.01f, healthMultiplier);
 
         public bool IsUnlockedAtWave(int wave)
         {

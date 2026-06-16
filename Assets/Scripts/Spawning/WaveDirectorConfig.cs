@@ -48,6 +48,11 @@ namespace Spawning
         [SerializeField, Min(0)] private int maxConcurrentPerWave = 1;
         [SerializeField] private AnimationCurve maxConcurrentMultiplierByWave = AnimationCurve.Linear(1f, 1f, 50f, 2f);
 
+        [Header("Enemy Scaling")]
+        [SerializeField] private AnimationCurve enemyHealthMultiplierByWave = AnimationCurve.Linear(1f, 1f, 50f, 9f);
+        [SerializeField] private AnimationCurve enemySpeedMultiplierByWave = AnimationCurve.Linear(1f, 1f, 50f, 1.6f);
+        [SerializeField] private AnimationCurve enemyDamageMultiplierByWave = AnimationCurve.Linear(1f, 1f, 50f, 3f);
+
         [Header("Role Cadence")]
         [SerializeField, Min(1)] private int eliteUnlockWave = 5;
         [SerializeField, Min(1)] private int eliteWaveInterval = 5;
@@ -81,6 +86,21 @@ namespace Spawning
         {
             float concurrent = startingMaxConcurrent + Mathf.Max(0, wave - 1) * maxConcurrentPerWave;
             return Mathf.Max(1, Mathf.RoundToInt(concurrent * EvaluateCurve(maxConcurrentMultiplierByWave, wave, 1f)));
+        }
+
+        public float GetEnemyHealthMultiplier(int wave)
+        {
+            return Mathf.Max(0.01f, EvaluateCurve(enemyHealthMultiplierByWave, wave, 1f));
+        }
+
+        public float GetEnemySpeedMultiplier(int wave)
+        {
+            return Mathf.Max(0.01f, EvaluateCurve(enemySpeedMultiplierByWave, wave, 1f));
+        }
+
+        public float GetEnemyDamageMultiplier(int wave)
+        {
+            return Mathf.Max(0.01f, EvaluateCurve(enemyDamageMultiplierByWave, wave, 1f));
         }
 
         public bool IsRoleAllowed(EnemySpawnRole role, int wave)

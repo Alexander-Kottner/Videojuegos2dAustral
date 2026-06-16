@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05e568fde398b4436ae56565f42e3b70, type: 3}
   m_Name: SpawnerOrchestratorConfig
   m_EditorClassIdentifier: Assembly-CSharp::Spawning.WaveDirectorConfig
-  enemyRoster: []
+  enemyRoster:
+  - {fileID: 11400000, guid: 84acbe5b245034d6e9e287cf9c5e48e1, type: 2}
+  - {fileID: 11400000, guid: 9420761821454402bce437d8c0cb27b8, type: 2}
+  - {fileID: 11400000, guid: ad116fc9951940ae8ec7e5660a26bdca, type: 2}
+  - {fileID: 11400000, guid: ca40e0a050d54ebea1bd3607d8a9cde0, type: 2}
+  - {fileID: 11400000, guid: ddda97abb23946c8a67a73baf7335ef5, type: 2}
   initialDelay: 2
   intermissionDuration: 4
-  startingWaveDuration: 25
+  startingWaveDuration: 22
   waveDurationPerWave: 1.5
   waveDurationMultiplierByWave:
     serializedVersion: 2
@@ -24,7 +29,7 @@ MonoBehaviour:
       time: 1
       value: 1
       inSlope: 0
-      outSlope: 0.010204081
+      outSlope: 0.01020408
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -32,7 +37,7 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 50
       value: 1.5
-      inSlope: 0.010204081
+      inSlope: 0.01020408
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
@@ -42,7 +47,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   startingBudget: 6
-  budgetPerWave: 2
+  budgetPerWave: 3
   budgetMultiplierByWave:
     serializedVersion: 2
     m_Curve:
@@ -102,7 +107,7 @@ MonoBehaviour:
       time: 1
       value: 1
       inSlope: 0
-      outSlope: 0.020408163
+      outSlope: 0.02040816
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -110,7 +115,79 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 50
       value: 2
-      inSlope: 0.020408163
+      inSlope: 0.02040816
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemyHealthMultiplierByWave:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0.16326531
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 50
+      value: 9
+      inSlope: 0.16326531
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemySpeedMultiplierByWave:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0.01224490
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 50
+      value: 1.6
+      inSlope: 0.01224490
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  enemyDamageMultiplierByWave:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0.04081633
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 50
+      value: 3
+      inSlope: 0.04081633
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
