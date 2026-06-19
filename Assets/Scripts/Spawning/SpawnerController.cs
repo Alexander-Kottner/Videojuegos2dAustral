@@ -126,6 +126,8 @@ namespace Spawning
         public void RestoreWaveState(int waveToResume)
         {
             _currentWave = Mathf.Max(0, waveToResume - 1);
+            _isIntermission = true;
+            _stateEndTime = Time.time + (config != null ? config.IntermissionDuration : 3f);
         }
 
         public void NotifyEnemyReleased(EnemyDefinition definition, EnemyController controller, bool returnToPool)

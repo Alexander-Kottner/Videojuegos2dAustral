@@ -181,7 +181,7 @@ public class GameStateManager : MonoBehaviour
 
         Weapons.PlayerWeaponController weaponController = FindFirstObjectByType<Weapons.PlayerWeaponController>();
         if (weaponController != null)
-            RestoreWeapons(weaponController, state.player.weapons);
+            weaponController.RestoreFromSave(state.player.weapons);
 
         Spawning.SpawnerController spawner = FindFirstObjectByType<Spawning.SpawnerController>();
         if (spawner != null && state.wave.currentWave > 0)
@@ -215,6 +215,8 @@ public class GameStateManager : MonoBehaviour
                 lastHitCount = weapon.LastHitCount
             });
         }
+
+        Debug.Log($"[Save] Captured {playerState.weapons.Count} weapon(s): {string.Join(", ", playerState.weapons.ConvertAll(w => w.definitionName))}");
     }
 
     private static void RestoreWeapons(Weapons.PlayerWeaponController controller, List<WeaponSaveState> savedWeapons)

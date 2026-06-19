@@ -11,6 +11,7 @@ namespace Weapons
     {
         [SerializeField] private List<WeaponController> startingWeaponPrefabs = new();
         [SerializeField] private List<WeaponDefinition> startingWeaponDefinitions = new();
+        [SerializeField] private WeaponLibrary weaponLibrary;
         [SerializeField] private Vector2 weaponSlotOffset = new(0.38f, -0.05f);
         [SerializeField, Min(0.05f)] private float weaponVisualScale = 0.85f;
 
@@ -63,6 +64,40 @@ namespace Weapons
 
                 definition.AttackBehaviour.Tick(BuildContext(i, weapon));
             }
+        }
+
+        public void RestoreFromSave(List<WeaponSaveState> savedWeapons)
+        {
+            if (savedWeapons == null || savedWeapons.Count == 0) return;
+
+            WeaponLibrary lib = weaponLibrary;
+            if (lib == null)
+            {
+                WeaponLibrary[] found = Resources.FindObjectsOfTypeAll<WeaponLibrary>();
+                if (found.Length > 0) lib = found[0];
+            }
+
+            if (lib == null) { Debug.LogWarning("[Restore] No WeaponLibrary found"); return; }
+
+            foreach (WeaponController w in _equippedWeapons)
+                if (w != null) Destroy(w.gameObject);
+            _equippedWeapons.Clear();
+
+            foreach (WeaponSaveState saved in savedWeapons)
+            {
+                WeaponDefinition def = null;
+                foreach (WeaponDefinition d in lib.Weapons)
+                {
+                    if (d != null && d.name == saved.definitionName) { def = d; break; }
+                }
+                if (def == null) continue;
+
+                WeaponController weapon = CreateWeapon(def);
+                _equippedWeapons.Add(weapon);
+                weapon.RestoreState(saved.stageIndex, saved.lastHitCount);
+            }
+
+            NotifyWeaponsChanged();
         }
 
         public bool HasDefinitionEquipped(WeaponDefinition definition)

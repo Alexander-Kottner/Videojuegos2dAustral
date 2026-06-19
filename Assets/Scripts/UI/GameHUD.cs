@@ -268,7 +268,7 @@ namespace UI
                 GameStateManager.SaveCurrentState();
                 Time.timeScale = 1f;
                 _isPaused = false;
-                UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             });
 
             _pausePanel.SetActive(false);
