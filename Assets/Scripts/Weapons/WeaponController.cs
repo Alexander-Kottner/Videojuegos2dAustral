@@ -149,6 +149,8 @@ namespace Weapons
             }
 
             _nextAttackTime = time + Mathf.Max(0f, cooldown);
+            if (definition != null)
+                AudioManager.PlayWeaponSFX(definition.SoundCategory);
             return true;
         }
 

@@ -98,6 +98,7 @@ namespace Enemies
 
             if (currentHealth == 0)
             {
+                AudioManager.PlayEnemyDie();
                 Died?.Invoke(this);
                 gameObject.SetActive(false);
             }

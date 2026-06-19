@@ -143,6 +143,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100000001}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -225,6 +226,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200000001}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -242,5 +244,87 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e7b5c1d2f3a4b506d7e8f9a0b1c2d3e4, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSprite: {fileID: 0}
+  enemySprite: {fileID: 0}
+  weaponSprite: {fileID: 0}
+--- !u!1 &1144844003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1144844005}
+  - component: {fileID: 1144844004}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1144844004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144844003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3276ca2926b7b45338651e58411dbabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AudioManager
+  menuMusic: {fileID: 8300000, guid: 6996a47f1cb5846fe977a4fa0e8bc2b4, type: 3}
+  gameMusic: {fileID: 8300000, guid: 3e323cb93164549d2b3e81587edfe6b3, type: 3}
+  musicVolume: 0.4
+  meleeSlashClips:
+  - {fileID: 8300000, guid: 54d4c673402b54266bd3ecb6e28f093f, type: 3}
+  - {fileID: 8300000, guid: fcd14d43013924771a85a6d052a6dbe1, type: 3}
+  - {fileID: 8300000, guid: 699fb29905af94acd813b9c619162d5b, type: 3}
+  meleeHeavyClips:
+  - {fileID: 8300000, guid: e1965c82f638940529ece1353e3dc9fc, type: 3}
+  - {fileID: 8300000, guid: c66577d4466904b058bf8a00fc9e342c, type: 3}
+  - {fileID: 8300000, guid: 1b720bb197eba48edafd70ebbc5f9df8, type: 3}
+  projectileClips:
+  - {fileID: 8300000, guid: f83f8b2fe0efc4352a1eacc73b8d9628, type: 3}
+  - {fileID: 8300000, guid: f9458596fd9c5433db7c63502d142413, type: 3}
+  magicClips:
+  - {fileID: 8300000, guid: 07c9ce213837f4d5fac247734e64ee63, type: 3}
+  - {fileID: 8300000, guid: ea299e8a43ed1489c89d21a0de84f06c, type: 3}
+  - {fileID: 8300000, guid: 1aa5130ba1e594c6ba8dc2aa0aba1bd2, type: 3}
+  enemyAttackClips:
+  - {fileID: 8300000, guid: 746c7cc79247b4deb90dd893d7b83840, type: 3}
+  - {fileID: 8300000, guid: e26e1f5e901db4086a6a37196b6cb6d0, type: 3}
+  enemyDieClips:
+  - {fileID: 8300000, guid: aef0f8a47a5c243bd90439459c0e2ed6, type: 3}
+  - {fileID: 8300000, guid: 51976a6a82a5d4f70a129cfdfee8af84, type: 3}
+  playerHurtClips:
+  - {fileID: 8300000, guid: e0febec74519244848389dfc19e44a28, type: 3}
+  - {fileID: 8300000, guid: 76d5c3379f1424b1cbe8570cbb438f49, type: 3}
+  sfxVolume: 0.8
+--- !u!4 &1144844005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144844003}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots:
+  - {fileID: 100000002}
+  - {fileID: 200000002}
+  - {fileID: 1144844005}

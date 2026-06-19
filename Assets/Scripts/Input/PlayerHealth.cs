@@ -74,6 +74,10 @@ namespace Input
             {
                 Died?.Invoke(this);
             }
+            else
+            {
+                AudioManager.PlayPlayerHurt();
+            }
         }
 
         public void RestoreState(int savedCurrentHealth, int savedMaxHealth)

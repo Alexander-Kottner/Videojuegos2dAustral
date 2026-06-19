@@ -3,6 +3,14 @@ using UnityEngine;
 
 namespace Weapons.Data
 {
+    public enum WeaponSoundCategory
+    {
+        MeleeLight,
+        MeleeHeavy,
+        Projectile,
+        Magic
+    }
+
     [CreateAssetMenu(fileName = "WeaponDefinition", menuName = "Game/Weapons/Weapon Definition")]
     public class WeaponDefinition : ScriptableObject
     {
@@ -10,6 +18,7 @@ namespace Weapons.Data
         [SerializeField, TextArea] private string description;
         [SerializeField] private WeaponRangeType rangeType = WeaponRangeType.Melee;
         [SerializeField] private WeaponWeightClass weightClass = WeaponWeightClass.Light;
+        [SerializeField] private WeaponSoundCategory soundCategory = WeaponSoundCategory.MeleeLight;
         [SerializeField] private WeaponAttackBehaviour attackBehaviour;
         [SerializeField] private List<WeaponStage> stages = new();
 
@@ -17,6 +26,7 @@ namespace Weapons.Data
         public string Description => description;
         public WeaponRangeType RangeType => rangeType;
         public WeaponWeightClass WeightClass => weightClass;
+        public WeaponSoundCategory SoundCategory => soundCategory;
         public WeaponAttackBehaviour AttackBehaviour => attackBehaviour;
         public int StageCount => stages.Count;
 

@@ -159,6 +159,7 @@ namespace Enemies
             }
 
             _nextAttackTime = time + Mathf.Max(0f, cooldown);
+            AudioManager.PlayEnemyAttack();
             return true;
         }
 
