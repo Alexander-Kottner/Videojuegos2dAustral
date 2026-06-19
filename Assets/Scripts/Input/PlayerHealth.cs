@@ -76,6 +76,13 @@ namespace Input
             }
         }
 
+        public void RestoreState(int savedCurrentHealth, int savedMaxHealth)
+        {
+            maximumHealth = Mathf.Max(1, savedMaxHealth);
+            currentHealth = Mathf.Clamp(savedCurrentHealth, 0, maximumHealth);
+            HealthChanged?.Invoke(currentHealth, maximumHealth);
+        }
+
         private void ClampHealth()
         {
             maximumHealth = Mathf.Max(1, maximumHealth);

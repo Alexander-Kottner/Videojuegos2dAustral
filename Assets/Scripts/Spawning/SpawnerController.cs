@@ -123,6 +123,11 @@ namespace Spawning
             _isRunning = false;
         }
 
+        public void RestoreWaveState(int waveToResume)
+        {
+            _currentWave = Mathf.Max(0, waveToResume - 1);
+        }
+
         public void NotifyEnemyReleased(EnemyDefinition definition, EnemyController controller, bool returnToPool)
         {
             if (definition != null && _aliveCounts.TryGetValue(definition, out int aliveCount))

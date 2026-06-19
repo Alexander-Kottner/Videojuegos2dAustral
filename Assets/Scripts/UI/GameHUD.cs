@@ -27,8 +27,10 @@ namespace UI
         private TextMeshProUGUI _waveText;
         private TextMeshProUGUI _weaponStatusText;
         private GameObject _endPanel;
+        private GameObject _pausePanel;
         private float _nextWeaponStatusTime;
         private bool _gameEnded;
+        private bool _isPaused;
 
         private readonly StringBuilder _statusBuilder = new();
 
@@ -82,13 +84,33 @@ namespace UI
 
         private void Update()
         {
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Escape) && !_gameEnded)
+                TogglePause();
+
             if (_weaponStatusText == null || playerWeapons == null || Time.unscaledTime < _nextWeaponStatusTime)
-            {
                 return;
-            }
 
             _nextWeaponStatusTime = Time.unscaledTime + WeaponStatusRefreshInterval;
             RefreshWeaponStatus();
+        }
+
+        public void TogglePause()
+        {
+            if (_isPaused) Resume(); else Pause();
+        }
+
+        private void Pause()
+        {
+            _isPaused = true;
+            Time.timeScale = 0f;
+            if (_pausePanel != null) _pausePanel.SetActive(true);
+        }
+
+        private void Resume()
+        {
+            _isPaused = false;
+            Time.timeScale = 1f;
+            if (_pausePanel != null) _pausePanel.SetActive(false);
         }
 
         private void HandleWaveStarted(int wave)
@@ -102,14 +124,12 @@ namespace UI
         private void HandleWaveCompleted(int wave)
         {
             if (_waveText != null)
-            {
                 _waveText.text = $"Wave {wave} cleared";
-            }
+
+            GameStateManager.SaveWaveCompleted(wave);
 
             if (wave == finalWave && !_gameEnded)
-            {
                 ShowVictory(wave);
-            }
         }
 
         private void HandlePlayerDied(PlayerHealthComponent health)
@@ -217,6 +237,41 @@ namespace UI
             _weaponStatusText.rectTransform.pivot = new Vector2(0f, 0f);
             _weaponStatusText.rectTransform.anchoredPosition = new Vector2(25f, 20f);
             _weaponStatusText.rectTransform.sizeDelta = new Vector2(700f, 130f);
+
+            // Pause button (top-right)
+            GameObject pauseBtn = new("PauseButton");
+            pauseBtn.transform.SetParent(canvasObject.transform, false);
+            Image pauseBtnBg = pauseBtn.AddComponent<Image>();
+            pauseBtnBg.color = new Color(0.15f, 0.15f, 0.22f, 0.85f);
+            SetRect(pauseBtnBg.rectTransform, new Vector2(1f, 1f), new Vector2(-50f, -40f), new Vector2(72f, 48f));
+            Button pauseButtonComp = pauseBtn.AddComponent<Button>();
+            pauseButtonComp.targetGraphic = pauseBtnBg;
+            pauseButtonComp.onClick.AddListener(TogglePause);
+            TextMeshProUGUI pauseLabel = CreateText(pauseBtn.transform, "Label", "II", 28, FontStyles.Bold, TextAlignmentOptions.Center);
+            Stretch(pauseLabel.rectTransform);
+
+            // Pause panel (hidden by default)
+            _pausePanel = new GameObject("PausePanel");
+            _pausePanel.transform.SetParent(canvasObject.transform, false);
+
+            Image dim = CreateImage(_pausePanel.transform, "Dim", new Color(0f, 0f, 0f, 0.7f));
+            Stretch(dim.rectTransform);
+
+            TextMeshProUGUI pauseTitle = CreateText(_pausePanel.transform, "PauseTitle", "PAUSED", 60, FontStyles.Bold, TextAlignmentOptions.Center);
+            pauseTitle.color = new Color(0.95f, 0.82f, 0.3f);
+            SetRect(pauseTitle.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, 100f), new Vector2(600f, 90f));
+
+            CreateButton(_pausePanel.transform, "Resume", new Vector2(0f, 0f), () => Resume());
+
+            CreateButton(_pausePanel.transform, "Save & Quit to Menu", new Vector2(0f, -100f), () =>
+            {
+                GameStateManager.SaveCurrentState();
+                Time.timeScale = 1f;
+                _isPaused = false;
+                UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+            });
+
+            _pausePanel.SetActive(false);
         }
 
         private void CreateButton(Transform parent, string label, Vector2 position, UnityEngine.Events.UnityAction onClick)

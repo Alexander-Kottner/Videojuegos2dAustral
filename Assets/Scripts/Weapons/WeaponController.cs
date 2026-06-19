@@ -118,6 +118,13 @@ namespace Weapons
             _bonusCooldownMultiplier *= Mathf.Clamp(multiplier, 0.1f, 10f);
         }
 
+        public void RestoreState(int stageIndex, int lastHitCount)
+        {
+            _lastHitCount = lastHitCount;
+            _stageIndex = stageIndex;
+            ApplyStageVisual(_stageIndex);
+        }
+
         public void NotifyLastHit()
         {
             _lastHitCount++;

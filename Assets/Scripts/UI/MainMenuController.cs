@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
@@ -25,7 +24,7 @@ namespace UI
 
             GameObject es = new("EventSystem");
             es.AddComponent<EventSystem>();
-            es.AddComponent<StandaloneInputModule>();
+            es.AddComponent<UnityEngine.InputSystem.UI.InputSystemUIInputModule>();
         }
 
         private void BuildMenu()
@@ -120,11 +119,25 @@ namespace UI
                 SetRect(img.rectTransform, new Vector2(0.5f, 0.5f), new Vector2(0f, -55f), new Vector2(56f, 56f));
             }
 
-            // Start button
-            CreateButton(canvasObject.transform, "START GAME", new Vector2(0f, -140f), () =>
+            // New Game button
+            CreateButton(canvasObject.transform, "NEW GAME", new Vector2(0f, -115f), () =>
             {
-                SceneManager.LoadScene("SampleScene");
+                GameStateManager.StartNewGame(1);
             });
+
+            // Continue button (only if save exists)
+            bool hasSave = GameStateManager.HasSavedGame;
+            GameObject continueBtn = CreateButton(canvasObject.transform, "CONTINUE", new Vector2(0f, -215f), () =>
+            {
+                GameStateManager.ContinueSavedGame(1);
+            });
+            if (!hasSave)
+            {
+                Button btn = continueBtn.GetComponent<Button>();
+                if (btn != null) btn.interactable = false;
+                TextMeshProUGUI lbl = continueBtn.GetComponentInChildren<TextMeshProUGUI>();
+                if (lbl != null) lbl.color = new Color(0.45f, 0.4f, 0.3f);
+            }
 
             // Version hint
             TextMeshProUGUI hint = CreateText(canvasObject.transform, "Hint", "Press START GAME to begin", 22, FontStyles.Normal, TextAlignmentOptions.Center);
@@ -132,17 +145,15 @@ namespace UI
             SetRect(hint.rectTransform, new Vector2(0.5f, 0f), new Vector2(0f, 30f), new Vector2(600f, 40f));
         }
 
-        private void CreateButton(Transform parent, string label, Vector2 position, UnityEngine.Events.UnityAction onClick)
+        private GameObject CreateButton(Transform parent, string label, Vector2 position, UnityEngine.Events.UnityAction onClick)
         {
             GameObject buttonObject = new(label);
             buttonObject.transform.SetParent(parent, false);
 
-            // Outer border
             Image border = buttonObject.AddComponent<Image>();
             border.color = new Color(0.95f, 0.75f, 0.2f, 0.9f);
             SetRect(border.rectTransform, new Vector2(0.5f, 0.5f), position, new Vector2(364f, 84f));
 
-            // Inner fill
             GameObject inner = new("Inner");
             inner.transform.SetParent(buttonObject.transform, false);
             Image fill = inner.AddComponent<Image>();
@@ -164,6 +175,8 @@ namespace UI
             TextMeshProUGUI text = CreateText(inner.transform, "Label", label, 34, FontStyles.Bold, TextAlignmentOptions.Center);
             text.color = new Color(0.95f, 0.82f, 0.3f);
             Stretch(text.rectTransform);
+
+            return buttonObject;
         }
 
         private static Image CreateImage(Transform parent, string name, Color color)
