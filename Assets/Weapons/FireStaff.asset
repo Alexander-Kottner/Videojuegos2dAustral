@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Lobs fireballs that explode, scorching everything nearby.
   rangeType: 1
   weightClass: 1
+  soundCategory: 2
   attackBehaviour: {fileID: 11400000, guid: d79c1526b07749c7b5979ef0355d2b39, type: 2}
   stages:
   - stageName: Fire Staff

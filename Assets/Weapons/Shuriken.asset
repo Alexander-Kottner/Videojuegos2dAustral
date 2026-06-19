@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Rapid spinning stars that punch through one extra target.
   rangeType: 1
   weightClass: 0
+  soundCategory: 2
   attackBehaviour: {fileID: 11400000, guid: 2d29d0e1e03949c28ad425b2e947ea48, type: 2}
   stages:
   - stageName: Shuriken

@@ -16,6 +16,7 @@ MonoBehaviour:
   description: A massive cleave that carves through every enemy in front of you.
   rangeType: 0
   weightClass: 1
+  soundCategory: 1
   attackBehaviour: {fileID: 11400000, guid: 4fa1b55d89a84f83ab13e6d789fb5fdf, type: 2}
   stages:
   - stageName: Battle Axe

@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Hurls stones that ricochet between enemies.
   rangeType: 1
   weightClass: 0
+  soundCategory: 2
   attackBehaviour: {fileID: 11400000, guid: 9613cc30b8e84f24baab0dc2e913dc05, type: 2}
   stages:
   - stageName: Sling

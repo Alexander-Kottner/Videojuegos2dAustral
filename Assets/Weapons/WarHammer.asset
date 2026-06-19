@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Slams the ground, sending a shockwave through all nearby enemies.
   rangeType: 0
   weightClass: 1
+  soundCategory: 1
   attackBehaviour: {fileID: 11400000, guid: 2889f2b9c5e34579bf58491d2f057763, type: 2}
   stages:
   - stageName: War Hammer

@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Fires steady arrows at the closest threat.
   rangeType: 1
   weightClass: 0
+  soundCategory: 2
   attackBehaviour: {fileID: 11400000, guid: 6b06eea87b134ab4b7417f49da8e023e, type: 2}
   stages:
   - stageName: Hunting Bow

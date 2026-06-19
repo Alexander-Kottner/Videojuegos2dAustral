@@ -16,6 +16,7 @@ MonoBehaviour:
   description: A blade wreathed in fire. Burns wide arcs into the horde.
   rangeType: 0
   weightClass: 1
+  soundCategory: 1
   attackBehaviour: {fileID: 11400000, guid: 95ddceed9091459ead7f190fb81566aa, type: 2}
   stages:
   - stageName: Inferno Blade

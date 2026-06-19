@@ -16,6 +16,7 @@ MonoBehaviour:
   description: A long piercing thrust that impales whole ranks of enemies.
   rangeType: 0
   weightClass: 1
+  soundCategory: 1
   attackBehaviour: {fileID: 11400000, guid: 445ce56d18d7493892d2470b77be04d3, type: 2}
   stages:
   - stageName: Trident

@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Launches arcane bolts that home in on prey.
   rangeType: 1
   weightClass: 0
+  soundCategory: 2
   attackBehaviour: {fileID: 11400000, guid: 40517dfc38544855b7568c5efee9393a, type: 2}
   stages:
   - stageName: Magic Wand

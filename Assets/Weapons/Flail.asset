@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Spiked heads orbit you constantly, grinding down anything they touch.
   rangeType: 0
   weightClass: 1
+  soundCategory: 3
   attackBehaviour: {fileID: 11400000, guid: f55a91fc47864ab0b9e2906227ac829c, type: 2}
   stages:
   - stageName: Flail

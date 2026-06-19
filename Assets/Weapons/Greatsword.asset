@@ -16,6 +16,7 @@ MonoBehaviour:
   description: A full spinning slash that hits everything around you.
   rangeType: 0
   weightClass: 1
+  soundCategory: 1
   attackBehaviour: {fileID: 11400000, guid: ea24abf5cf4e460a858cd2bea486b3fc, type: 2}
   stages:
   - stageName: Greatsword

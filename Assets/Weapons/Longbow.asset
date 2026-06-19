@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Skewers an entire lane of enemies with one arrow.
   rangeType: 1
   weightClass: 1
+  soundCategory: 2
   attackBehaviour: {fileID: 11400000, guid: d0d7dce153284152858737fa4df078a7, type: 2}
   stages:
   - stageName: Longbow

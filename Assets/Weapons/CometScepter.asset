@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Calls comets down on distant enemies after a short delay.
   rangeType: 1
   weightClass: 1
+  soundCategory: 3
   attackBehaviour: {fileID: 11400000, guid: 45d7a1abeac64ca980f600d9522a908c, type: 2}
   stages:
   - stageName: Comet Scepter

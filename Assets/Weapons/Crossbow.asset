@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Heavy bolts that punch straight through several enemies.
   rangeType: 1
   weightClass: 1
+  soundCategory: 3
   attackBehaviour: {fileID: 11400000, guid: 0755e1278e20433483c150c3678cb7d8, type: 2}
   stages:
   - stageName: Crossbow

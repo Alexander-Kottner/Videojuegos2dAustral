@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Heavy spinning hatchets with real stopping power.
   rangeType: 1
   weightClass: 0
+  soundCategory: 2
   attackBehaviour: {fileID: 11400000, guid: a79b67153b944013b3682a5644377a1e, type: 2}
   stages:
   - stageName: Throwing Axe
